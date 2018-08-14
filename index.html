@@ -1,1 +1,89 @@
-Hello World
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="icon" href="images/icon.png" type="image/png" sizes="32x32">
+		<!-- title -->
+		<title>Jaskirat Singh</title>
+
+		<!-- link to the css style files -->
+		<link href="tools/css/all.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="styles.css"> 
+	</head>
+	
+	<body>
+	
+	<div class="navbar">
+		<div class="navbar_container" id="topnav">
+			<a href="#" class="nav_logo">
+				<img class="header__logo" src="images/im_face.png" alt="face image">
+				<div class="header__title">Jaskirat Singh</div>
+			</a>
+			<a href="#">About</a></li>
+			<a href="#">Blog</a></li>
+			<a href="#" href="javascript:void(0);" class="icon" id="menu"><i class="fas fa-bars"></i></a>
+		</div>
+	</div>
+	
+	<div class="main_content">
+		
+		<div class="bio">
+			<h1>Bio</h1>
+			<p>I am a Front-End Web Developer Nanodegree Student at Udacity.</p>
+		</div>
+		
+		<div class="potrait">
+			<img class="potrait_img" src="images/git_im.jpg" alt="my image">
+		</div>
+		
+		<div class="social_media_bar">
+			<a href="https://github.com/1jsingh" class="social_media_logo" target="_blank"><i class="fab fa-github"></i></a>
+			<a href="https://www.linkedin.com/in/1jaskirat-singh/" class="social_media_logo" target="_blank"><i class="fab fa-linkedin"></i></a>
+			<a href="https://www.facebook.com/1jaskirat.singh" class="social_media_logo" target="_blank"><i class="fab fa-facebook"></i></a>
+			<a href="https://twitter.com/1jaskiratsingh" class="social_media_logo" target="_blank"><i class="fab fa-twitter"></i></a>
+		</div>
+
+		<div class="featured_work">
+			<h1>Featured Work</h1>
+			<table class="featured-work_table">
+				<tbody>
+					<tr class="work_row">
+						<td class="work_col_1"><a href="#"><img class="project_logo" src="images/proj-1.png" alt="project-1"></a></td>
+						<td class="work_col_2">Project-1</td>
+					</tr>
+
+					<tr class="work_row">
+						<td class="work_col_1"><a href="#"><img class="project_logo" src="images/proj-2.png" alt="project-2"></a></td>
+						<td class="work_col_2">Project-2</td>
+					</tr>
+
+					<tr class="work_row">
+						<td class="work_col_1"><a href="#"><img class="project_logo" src="images/proj-3.png" alt="project-3"></a></td>
+						<td class="work_col_2">Project-3</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<script>
+		/*
+		* Open the drawer when the menu icon is clicked.
+		*/
+		var menu = document.querySelector('#menu');
+		var main = document.querySelector('.main_content');
+		var drawer = document.querySelector('#topnav');
+
+		menu.addEventListener('click', function(e) {
+		drawer.classList.toggle('responsive');
+		e.stopPropagation();
+		});
+		main.addEventListener('click', function() {
+		drawer.classList.remove('responsive');
+		});
+	</script>
+
+	</body>
+	</html>
