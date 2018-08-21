@@ -53,7 +53,7 @@ nav {
 	font-weight: 300;
 	font-size: 16px;
 	text-decoration: none;
-	text-align: center;
+	text-align: left;
 	color: #616161;
 	padding: 24px;
 	vertical-align: top;
@@ -265,7 +265,7 @@ main {
 	}
 }
 
-@media screen and (max-width:700px) {
+@media screen and (max-width:600px) {
 	.navbar_container a:not(:first-child) {
 		display: none;
 	}
@@ -273,13 +273,11 @@ main {
 		display: inline-block;
 	}
 	.navbar_container.responsive a {
-		width: 200px;
 		display: block;
 		text-align: left;
 	}
 	/*.navbar_container.responsive{position:relative;}*/
 	.navbar_container.responsive .icon {
-		/*right:0;*/
 		text-align: center;
 		width: 40px;
 		padding-left: 0;
