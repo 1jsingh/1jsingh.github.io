@@ -10,7 +10,7 @@
 	<title>Jaskirat Singh</title>
 	<!-- link to the css style files -->
 	<link href="tools/css/all.css" rel="stylesheet">
-	<link href="styles.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
 </head>
 
 <body>
@@ -73,21 +73,7 @@
 			</table>
 		</div>
 	</main>
-	<script>
-	          /*
-	          * Open the drawer when the menu icon is clicked.
-	          */
-	          var menu = document.querySelector('#menu');
-	          var main = document.querySelector('main');
-	          var drawer = document.querySelector('#topnav');
-
-	          menu.addEventListener('click', function(e) {
-	          drawer.classList.toggle('responsive');
-	          e.stopPropagation();
-	          });
-	          main.addEventListener('click', function() {
-	          drawer.classList.remove('responsive');
-	          });
-	</script>
+	<!-- link to the javascript file -->
+	<script src="js/main.js"></script>
 </body>
 </html>
