@@ -23,6 +23,10 @@ td {
 	vertical-align: middle;
 }
 
+p {
+	line-height: 1.7em;
+}
+
 /*
  *
  * Top Navigation Bar
@@ -128,7 +132,7 @@ main {
 
 .bio {
 	order: 0;
-	width: 60%;
+	width: 65%;
 	/*box-shadow: 0 0px 1px rgba(0, 0, 0, 0.26);*/
 	border-bottom: 1px double;
 	border-color: #C5C9C9;
