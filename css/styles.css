@@ -137,6 +137,7 @@ main {
 	border-bottom: 1px double;
 	border-color: #C5C9C9;
 	margin-right: 10%;
+	text-align: justify;
 }
 
 /*
@@ -284,5 +285,29 @@ main {
 		width: 40px;
 		padding-left: 0;
 		padding-right: 0;
+	}
+
+	main {
+		width: 94%;
+		margin-left: 3%;
+		margin-right: 3%;
+	}
+
+	body {
+		font-size: 14px;
+	}
+
+	.featured_work {
+		font-size:12px;
+	}
+
+	.work_col_1 {
+		width: 30%;
+		padding: 10px;
+	}
+
+	.work_col_2 {
+		width: 70%;
+		padding: 10px;
 	}
 }
