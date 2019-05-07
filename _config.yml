@@ -25,6 +25,9 @@ exclude:
   - README.md
   - Rakefile
 
+# permalink setting
+permalink: pretty
+
 collections:
   pages:
     output: true
