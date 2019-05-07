@@ -24,3 +24,8 @@ exclude:
   - LICENSE
   - README.md
   - Rakefile
+
+collections:
+  pages:
+    output: true
+    permalink: /:path
