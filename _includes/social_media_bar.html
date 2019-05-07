@@ -1,0 +1,6 @@
+<!----------------------------------- social media bar ----------------------------------->
+<div class="social_media_bar">
+	{% for item in site.data.social_media_bar %}
+			<a class="social_media_logo" href="{{ item.link }}" target="_blank"><i class="{{ item.icon_class }}"></i></a>
+		{% endfor %}
+</div>

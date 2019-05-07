@@ -1,0 +1,17 @@
+<!----------------------------------- navbar ----------------------------------->
+<nav>
+	<div class="navbar_container" id="topnav">
+		<a class="nav_logo" href="#">
+			<img alt="face image" class="header__logo" src="assets/images/im_face.png">
+			<div class="header__title">
+				Jaskirat Singh
+			</div>
+		</a>
+
+		{% for item in site.data.navigation %}
+			<a href="{{ item.link }}" {% if page.url == item.link %}class="current"{% endif %}>{{ item.name }}</a>
+		{% endfor %}
+
+		<a class="icon" href="#" id="menu"><i class="fas fa-bars"></i></a>
+	</div>
+</nav>
