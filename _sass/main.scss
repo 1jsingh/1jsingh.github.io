@@ -13,7 +13,7 @@ html {
 }
 
 body {
-	font-family: Arial;
+	font-family: Helvetica, Arial, sans-serif;
 	font-size: 16px;
 	color: #424242;
 }
@@ -35,11 +35,12 @@ p {
 
 nav {
 	width: 100%;
-	border-bottom: 1px double;
-	border-color: #C5C9C9;
-	/*height: 72px;*/
-	min-height: 56px;
+	/*border-bottom: 1px double;*/
+	/*border-color: #C5C9C9;*/
+	/*height: 60px;*/
+	/*min-height: 56px;*/
 	transition: min-height 0.3s;
+	background-color: #797979;
 }
 
 .navbar_container {
@@ -47,6 +48,7 @@ nav {
 	/*height: inherit;*/
 	margin-left: auto;
 	margin-right: auto;
+
 }
 
 .navbar_container a {
@@ -57,19 +59,21 @@ nav {
 	font-weight: 300;
 	font-size: 16px;
 	text-decoration: none;
-	text-align: left;
-	color: #616161;
-	padding: 24px;
+	text-align: center;
+	/*color: #616161;*/
+	color: #FDFDFD;
+	padding: 22px;
 	vertical-align: top;
 	opacity: 1;
 }
 
 .navbar_container .current{
-	color: #4582ec;
+	background-color: #BABABA;
 }
 
 .navbar_container .nav_logo {
 	width: 200px;
+	align-content: left;
 	padding: 0;
 	margin-right: 10px;
 }
@@ -77,10 +81,11 @@ nav {
 .navbar_container a:hover {
 	color: #212121;
 	cursor: pointer;
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 .navbar_container .nav_logo:hover {
+	color: #FDFDFD;
 	text-decoration: none;
 }
 
@@ -91,14 +96,15 @@ nav {
 	border-radius: 4px;
 	border-style: groove;
 	padding: 1px;
-	margin: 5px;
+	margin-top: 2px;
+	/*margin: 5px;*/
 }
 
 .header__title {
 	font-size: 16px;
 	display: inline-block;
 	vertical-align: top;
-	padding: 24px 0;
+	padding: 21px 0;
 }
 
 .navbar_container .icon {
@@ -256,9 +262,13 @@ main {
 		margin-left: 5%;
 		margin-right: 5%;
 	}
+
+	.featured_work {
+		font-size:15px;
+	}
 }
 
-@media screen and (max-width:850px) {
+@media screen and (max-width:950px) {
 	.potrait {
 		order: 0;
 		width: 100%;
@@ -274,6 +284,24 @@ main {
 		width: 100%;
 		margin: 0;
 	}
+
+	body {
+		font-size: 15px;
+	}
+
+	.featured_work {
+		font-size:14px;
+	}
+
+	.work_col_1 {
+		width: 30%;
+		padding: 10px;
+	}
+
+	.work_col_2 {
+		width: 70%;
+		padding: 10px;
+	}
 }
 
 @media screen and (max-width:600px) {
@@ -285,8 +313,13 @@ main {
 	}
 	.navbar_container.responsive a {
 		display: block;
-		text-align: left;
+		text-align: center;
 	}
+	
+	.navbar_container.responsive .current{
+	background-color: #797979;
+	}
+
 	/*.navbar_container.responsive{position:relative;}*/
 	.navbar_container.responsive .icon {
 		text-align: center;
