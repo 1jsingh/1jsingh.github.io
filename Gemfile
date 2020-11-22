@@ -1,20 +1,17 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
-ruby RUBY_VERSION
 
-# We'll need rake to build our site in TravisCI
-gem "rake", "~> 12"
-gem "jekyll"
+git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-# Outside the jekyll plugin group
-gem "html-proofer"
+# gem "rails"
 
-# Optional: Add any custom plugins here.
-# Some useful examples are listed below
+gem "jekyll", "~> 4.1"
 group :jekyll_plugins do
-  gem "jekyll-feed"
-  gem "jekyll-sitemap"
+  gem 'jekyll-sitemap'
+  gem 'jekyll-feed'
+  gem 'jekyll-seo-tag'
   gem "jekyll-paginate-v2"
-  gem "jekyll-seo-tag"
   gem "jekyll-compose", "~> 0.5"
   gem "jekyll-redirect-from"
 end
