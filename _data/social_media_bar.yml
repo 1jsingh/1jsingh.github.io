@@ -10,3 +10,12 @@
 - name: Twitter
   link: https://twitter.com/1jaskiratsingh
   icon_class: fab fa-twitter
+- name: Google-Scholar
+  link: https://scholar.google.com/citations?user=HAmEM_4AAAAJ&hl=en
+  icon_class: ai ai-google-scholar
+- name: Google-Scholar
+  link: https://scholar.google.com/citations?user=HAmEM_4AAAAJ&hl=en
+  icon_class: fa fa-graduation-cap
+- name: CV
+  link: /data/cv.pdf
+  icon_class: ai ai-cv
