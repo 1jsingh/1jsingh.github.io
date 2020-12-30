@@ -1,15 +1,15 @@
-- name: Github
-  link: https://github.com/1jsingh
-  icon_class: fab fa-github
+# - name: Github
+#   link: https://github.com/1jsingh
+#   icon_class: fab fa-github
 - name: Linkedin
   link: https://www.linkedin.com/in/1jaskirat-singh
   icon_class: fab fa-linkedin
-- name: Facebook
-  link: https://www.facebook.com/1jaskirat.singh
-  icon_class: fab fa-facebook
-- name: Twitter
-  link: https://twitter.com/1jaskiratsingh
-  icon_class: fab fa-twitter
+# - name: Facebook
+#   link: https://www.facebook.com/1jaskirat.singh
+#   icon_class: fab fa-facebook
+# - name: Twitter
+#   link: https://twitter.com/1jaskiratsingh
+#   icon_class: fab fa-twitter
 - name: Google-Scholar
   link: https://scholar.google.com/citations?user=HAmEM_4AAAAJ&hl=en
   icon_class: ai ai-google-scholar
