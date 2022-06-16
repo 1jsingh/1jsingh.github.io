@@ -27,6 +27,27 @@ p {
 	line-height: 1.7em;
 }
 
+a:link {
+	color: rgb(57, 194, 207);
+	background-color: transparent;
+	text-decoration: none;
+  }
+a:visited {
+color: rgb(57, 194, 207);
+background-color: transparent;
+text-decoration: none;
+}
+a:hover {
+color: orange;
+background-color: transparent;
+text-decoration: underline;
+}
+a:active {
+color: rgb(57, 194, 207);
+background-color: transparent;
+text-decoration: underline;
+}
+
 /*
  *
  * Top Navigation Bar
