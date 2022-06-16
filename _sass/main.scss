@@ -28,12 +28,12 @@ p {
 }
 
 a:link {
-	color: rgb(57, 194, 207);
+	color: rgb(1, 158, 172);
 	background-color: transparent;
 	text-decoration: none;
   }
 a:visited {
-color: rgb(57, 194, 207);
+color: rgb(1, 158, 172);
 background-color: transparent;
 text-decoration: none;
 }
@@ -43,7 +43,7 @@ background-color: transparent;
 text-decoration: underline;
 }
 a:active {
-color: rgb(57, 194, 207);
+color: rgb(1, 158, 172);
 background-color: transparent;
 text-decoration: underline;
 }
@@ -169,6 +169,30 @@ main {
 	border-color: #C5C9C9;
 	margin-right: 10%;
 	text-align: justify;
+}
+
+.bio a:link {
+	color: rgb(1, 158, 172);
+	background-color: transparent;
+	text-decoration: none;
+}
+
+.bio a:visited {
+color: rgb(1, 158, 172);
+background-color: transparent;
+text-decoration: none;
+}
+
+.bio a:hover {
+color: orange;
+background-color: transparent;
+text-decoration: underline;
+}
+
+.bio a:active {
+color: rgb(1, 158, 172);
+background-color: transparent;
+text-decoration: underline;
 }
 
 /*
