@@ -4,6 +4,10 @@ body {
 
 .alternate-section {
   /* background-color: #dedddd45; */
+  /* margin: 20px auto; */
+  padding: 40px;
+  border-bottom: 1px solid #bbb;
+  width: 1000px;
 }
 
 .separate-section {
@@ -130,17 +134,32 @@ body {
 
 .results-carousel .item {
   margin: 5px;
+  /* margin-left: -100px; */
+  /* margin-right: -100px; */
   overflow: hidden;
   border: 1px solid #bbb;
   border-radius: 10px;
   padding: 0;
   font-size: 0;
+  /* width: 256px; */
+  max-width: 4096px;
 }
 
 .results-carousel video {
   margin: 0;
 }
 
+/* .results-carousel .item .carousel-content {
+  padding: 0px 0 12px 0;
+  border-radius: 10px
+} */
+
+.results-carousel img {
+  /* border: 1px solid #bbb; */
+  /* border-radius: 10px; */
+  width: 100%;
+  max-width: 4096px;
+}
 
 .interpolation-panel {
   background: #f5f5f5;
