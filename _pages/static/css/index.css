@@ -5,9 +5,12 @@ body {
 .alternate-section {
   /* background-color: #dedddd45; */
   /* margin: 20px auto; */
-  padding: 40px;
+  /* text-align: center; */
+  margin-bottom: -50px;
+  margin-top: -20px;
+  padding: 30px 5px 40px 5px;
   border-bottom: 1px solid #bbb;
-  width: 1000px;
+  width: 1200px;
 }
 
 .separate-section {
