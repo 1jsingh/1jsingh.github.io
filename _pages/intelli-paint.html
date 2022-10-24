@@ -40,6 +40,7 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  <base target="_blank">
 </head>
 <body>
 
@@ -110,7 +111,7 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2112.08930"
+                <a href="https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136760662.pdf"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -129,7 +130,7 @@
               </span>
               <!-- Video Link. -->
               <span class="link-block">
-                <a href="#"
+                <a href="https://drive.google.com/file/d/1sf_kvdPcxU_w2e5ES-VAq_UsjN5i_TZA/view?usp=sharing"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-youtube"></i>
@@ -139,12 +140,12 @@
               </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="#"
+                <a href="https://drive.google.com/file/d/1K_HZgJifUpZxDEqKyJHkU_FgPfOOKzGS/view?usp=sharing"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
-                      <i class="fab fa-github"></i>
+                      <i class="fas fa-scroll"></i>
                   </span>
-                  <span>Code</span>
+                  <span>Poster</span>
                   </a>
               </span>
               <!-- Dataset Link. -->
@@ -168,15 +169,14 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body" text-align: center>
-      <img src="https://1jsingh.github.io/assets/publications/images/paint2pix.png" width=100%/>  
+      <img src="./docs/intelli-paint/assets/overview-v10.png" width=100%/>  
       <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
         <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/teaser.mp4"
                 type="video/mp4">
       </video> -->
       <h2 class="subtitle has-text-centered">
-        We propose <em>paint2pix</em> which helps the user directly express his/her ideas in visual form by learning to predict user-intention from a few rudimentary brushstrokes. The proposed approach can be used for (a) synthesizing a desired image output directly from scratch 
-wherein it allows the user to control the overall synthesis trajectory using just few coarse brushstrokes (blue arrows) at key points,
-or, (b) performing a diverse range of custom edits directly on real image inputs.
+        We propose <em>Intelli-paint</em> which tries to address the need for more human-intelligible painting agents.  (Left) Painting sequence visualization which demonstrates that our method exhibits significantly higher resemblance with the human painting style as opposed to previous state of the art.  (Right) This resemblance is achieved through 1) a progressive layering strategy which allows for a more human-like evolution of the canvas, 2) a sequential attention mechanism which focuses on different image regions in a coarse-to-fine fashion and 3) a brushstroke regularization formulation which allows our method to obtain detailed results while using significantly fewer brushstrokes. 
+        <!-- (~1/20 as compared to Paint Transformer in above). -->
       </h2>
     </div>
   </div>
@@ -249,20 +249,25 @@ or, (b) performing a diverse range of custom edits directly on real image inputs
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Controllable image synthesis with user scribbles is a topic
-            of keen interest in the computer vision community. In this paper, for
-            the first time we study the problem of photorealistic image synthesis
-            from incomplete and primitive human paintings. In particular, we propose a novel approach paint2pix, which learns to predict (and adapt)
-            “what a user wants to draw” from rudimentary brushstroke inputs, by
-            learning a mapping from the manifold of incomplete human paintings to
-            their realistic renderings. When used in conjunction with recent works
-            in autonomous painting agents, we show that paint2pix can be used for
-            progressive image synthesis from scratch. During this process, paint2pix
-            allows a novice user to progressively synthesize the desired image output,
-            while requiring just few coarse user scribbles to accurately steer the trajectory of the synthesis process. Furthermore, we find that our approach
-            also forms a surprisingly convenient approach for real image editing, and
-            allows the user to perform a diverse range of custom fine-grained edits
-            through the addition of only a few well-placed brushstrokes.
+            Stroke based rendering methods have recently become a popular solution for the generation of stylized paintings. However, the current research in this direction is focused mainly on the improvement of
+            final canvas quality, and thus often fails to consider the intelligibility of
+            the generated painting sequences to actual human users. In this work, we
+            motivate the need to learn more human-intelligible painting sequences
+            in order to facilitate the use of autonomous painting systems in a more
+            interactive context (e.g. as a painting assistant tool for human users or
+            for robotic painting applications). To this end, we propose a novel painting approach which learns to generate output canvases while exhibiting
+            a painting style which is more relatable to human users. The proposed
+            painting pipeline Intelli-Paint consists of 1) a progressive layering strategy which allows the agent to first paint a natural background scene
+            before adding in each of the foreground objects in a progressive fashion.
+            2) We also introduce a novel sequential brushstroke guidance strategy
+            which helps the painting agent to shift its attention between different
+            image regions in a semantic-aware manner. 3) Finally, we propose a
+            brushstroke regularization strategy which allows for „60-80% reduction
+            in the total number of required brushstrokes without any perceivable
+            differences in the quality of generated canvases. Through both quantitative and qualitative results, we show that the resulting agents not only
+            show enhanced efficiency in output canvas generation but also exhibit
+            a more natural-looking painting style which would better assist human
+            users express their ideas through digital artwork.
           </p>
         </div>
       </div>
@@ -283,60 +288,170 @@ or, (b) performing a diverse range of custom edits directly on real image inputs
 </section>
 
 <!-- other sections -->
-<section class="section">
-<!-- Paper video. -->
-<div class="alternate-section separate-section">
-  <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-4">Progressive Image Synthesis</h2>
-        <p style="text-align:left">When used in conjunction with recent works
-          in autonomous painting agents, we show that paint2pix can be used for
-          progressive image synthesis from scratch. During this process, paint2pix
-          allows a novice user to progressively synthesize the desired image output,
-          while requiring just few coarse user scribbles to accurately steer the trajectory of the synthesis process. <br><br></p>
-        <figure>
-          <img src="./docs/prog-synthesis.png" width=100%/>
-          <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
-        </figure>
-      </div>
+<section class="hero">
+  <!-- Paper video. -->
+  <div class="hero-body is-small">
+  <div class="container alternate-section">
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-2">Need for more human-intelligible painting sequences?</h2>
+          <p style="text-align:left">
+            <b>Interactive Painting Applications</b>.  The practical merits of a stroke based rendering approach over pixel based image stylization methods (e.g. using GANs, VAEs) relies on its ability to mimic the human artistic creation process. Infact, several previous works including Paint Transformer, Optim and RL describe this ability to mimic a human-like painting process as their motivation for using a brushstroke based approach for image generation. The idea is that once trained, the learned painting agent can then act as a painting assistant / teaching tool for human users (Paint Transformer, RL {Huang <em>et al.</em>, 2019}). 
+            <br><br>
+            <b>Robotic Painting Applications</b>. Robotic applications for expression of AI creativity are being increasingly explored. For instance Pindar Van's cloudpainter robot has gained widespread global attention for the automated creation of artistic paintings. Our contribution is significant in this direction, as our method not only learns a painting sequence which is more interpretable to actual human users, but more importantly it provides an *efficient painting plan* which would allow a robotic agent to paint a vivid scene using significantly less number of total brushstrokes as compared to previous works. <br><br>
+            <br>
+          </p>
+          <figure>
+            <img src="./docs/intelli-paint/assets/prev_work_overview.png" width=100%/>
+            <figcaption>Fig. 2 - Overview of the progressive gridding inference strategy from previous works. The painting agent  divides the overall image into successively finer grids, and then proceeds to paint each of them in parallel.</figcaption>
+          </figure>
+          <p style="text-align:left">
+            <br><br>
+            Despite the above mentioned motivations, the generation of competitive results using previous works is invariably dependent on a progressive grid-based division strategy. In this setting, the agent divides the overall image into successively finer grids, and then proceeds to paint each of them in parallel. Experimental analysis reveals that this not only reduces the efficiency of the final agent, but also leads to mechanical (grid-based) painting sequences (refer Fig. 2) which are not directly applicable to actual human users.
+            <br><br> <br><br>
+          </p>
+          <figure align = "center"><img src="./docs/intelli-paint/assets/optim_grid_seq2.gif" alt="prev_work" width="350" height="256"> <figcaption align = "center"><br>Fig. 3 - Previous works exhibit a mechanical (grid-based) painting <br> sequence which is not directly applicable to human users. </figcaption></figure>
+        </div>
     </div>
   </div>
-</div>
-
-<div class="separate-section">
-  <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-4">Real Image Editing</h2>
-        <p style="text-align:left">In addition to being able to perform progressive synthesis from scratch, paint2pix
-        also offers a surprisingly convenient approach for making a diverse range of custom semantic edits (e.g., add smile for faces) on real images by simply initializing
-        the input canvas with a real image.<br><br> </p>
-        <figure>
-          <img src="./docs/custom-color-edits.png" width=100%/>
-          <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
-        </figure>
-      </div>
+  </div>
+  
+  <div class="hero-body is-small">
+  <div class="container alternate-section">
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-2">Mimicking the human painting process</h2>
+          <p style="text-align:left">
+            In order to address the need for more human-intelligible painting sequences, we propose a novel <em>Intelli-Paint</em> pipeline which learns to paint canvases while mimicking the human painting process using three main modules. 
+            <br><br>
+          </p>
+          <ol style="text-align:left">
+            <li><strong><span>Progressive Layering</span></strong></li>
+            <li><strong><span>Sequential Brushstroke Guidance</span></strong></li>
+            <li><strong><span>Brushstroke Regularization</span></strong></li>
+          </ol>
+          <p style="text-align:left">
+            <br>
+            We next analyse the importance of each module in learning a more human-relatable painting style.
+          </p>
+        </div>
     </div>
   </div>
-</div>
+  </div>
 
-<div class="alternate-section separate-section">
-  <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-4">Artistic Content Generation</h2>
-        <p style="text-align:left">While the main goal of paint2pix is to perform photorealistic image synthesis from primitive human paintings and brushstrokes, it can also be used for
-          artistic content generation. In the following paint2pix allows a novice artist to generate different forms
-          of professional artistic content (e.g., colored sketches, oil painting, disney cartoons, watercolor paintings, etc.) using just few rudimentary brushstroke inputs. <br> <br></p>
-        <figure>
-          <img src="./docs/watercolor-synthesis.png" width=100%/>
-          <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
-        </figure>
+  <div class="hero-body is-small">
+    <div class="container alternate-section">
+      <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Progressive Layering</h2>
+            <p style="text-align:left">
+              The human painting process is often progressive and multi-layered. That is, instead of painting everything on the canvas at once, humans often first paint a basic background layer before progressively adding each of the foreground objects on top of it (refer Fig. 1). However, such a strategy is hard to learn using previous works which directly minimize the pixel wise distance the generated canvas and the target image.
+              <br><br> 
+              As shown in Fig. 4 below, we propose a progressive layering module, which much like a human artist, allows the painted canvas to evolve in multiple successive layers.
+              <br><br> 
+          </p>
+            <figure align = "center">
+              <img display=inline-block src="./docs/intelli-paint/assets/proglayer-test-1.gif" alt="Trulli" width="256" height="256"> 
+              <img src="./docs/intelli-paint/assets/proglayer-test1-after.gif" alt="Trulli" width="256" height="256"> 
+              </figure>
+              <figure align = "center">
+              <img display=inline-block src="./docs/intelli-paint/assets/proglayer-test-2.gif" alt="Trulli" width="256" height="256">
+              <img src="./docs/intelli-paint/assets/proglayer-test2-after.gif" alt="Trulli" width="256" height="256">
+              </figure>
+              <figure align = "center">
+              <img display=inline-block src="./docs/intelli-paint/assets/proglayer-test-3.gif" alt="Trulli" width="256" height="256"> 
+              <img src="./docs/intelli-paint/assets/proglayer-test3-after.gif" alt="Trulli" width="256" height="256"> 
+              </figure>
+              <figure align = "center">
+              <img display=inline-block src="./docs/intelli-paint/assets/proglayer-test-4.gif" alt="Trulli" width="256" height="256"> 
+              <img src="./docs/intelli-paint/assets/proglayer-test4-after.gif" alt="Trulli" width="256" height="256"> 
+              <figcaption align = "justify"><br>Fig. 4 - <b>Abalation analysis on role of progressive layering. </b> (<i>Left,Right</i>) Painting sequences w/o and with use of progressive layering.  Instead of starting to paint everthing on the canvas at once (left), the progressive layering approach (right) allows the painting agent to draw a given canvas in multiple layers (<i>e.g.</i> painting a realistic background layer before progressively adding foreground objects in above).</figcaption>
+            </figure>
+          </div>
       </div>
     </div>
-  </div>
-</div>
+    </div>
 
-<!--/ Paper video. -->
-<!-- </div> -->
+    <div class="hero-body is-small">
+      <div class="container alternate-section">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+              <h2 class="title is-3">Sequential Brushstroke Guidance</h2>
+              <p style="text-align:left">
+                Once the background layer has been painted, the sequential brush-stroke guidance strategy helps our method to add different foreground features in a semantic-aware manner.
+                <br><br>
+            </p>
+            <figure align = "center">
+              <img display=inline-block src="https://intellipaint.s3.us-west-1.amazonaws.com/project_website/seq_celeba1_seq.gif" alt="Trulli" width="256" height="256"> 
+              <img src="https://intellipaint.s3.us-west-1.amazonaws.com/project_website/seq_celeba1.gif" alt="Trulli" width="256" height="256">
+            </figure>
+            <figure align = "center">
+              <img display=inline-block src="https://intellipaint.s3.us-west-1.amazonaws.com/project_website/seq_celeba2.gif" alt="Trulli" width="256" height="256"> 
+              <img src="https://intellipaint.s3.us-west-1.amazonaws.com/project_website/seq_celeba2_seq.gif" alt="Trulli" width="256" height="256"> 
+              <figcaption align = "justify"><br>Fig. 5 - <b>Abalation analysis on role of sequential guidance. </b> (<i>Left,Right</i>) Painting sequences w/o and with use of sequential guidance after painting the  background layer.  Instead of adding brushstrokes randomly all over the canvas (left), our approach (right) constrains the painting agent to focus / refine different image areas in a coarse to fine semantic-aware manner.</figcaption></figure>
+            </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="hero-body is-small">
+        <div class="container alternate-section">
+          <div class="columns is-centered has-text-centered">
+              <div class="column is-four-fifths">
+                <h2 class="title is-3">Brushstroke Regularization</h2>
+                <p style="text-align:left">
+                  The current works on autonomous painting are often limited to using (an almost) fixed brush stroke budget irrespective of the complexity of the target image. Experiments reveal that this not reduces the efficiency of the generated painting sequence but also results in redundant / overlapping brushstroke patterns (refer Fig. 4) which impart an unnatural painting style to the final agent. As shown in Fig. 6 below, we propose a brushstroke regularization formulation which removes the above painting redundancies, thereby considerably improving both painting efficiency and human-relatability of our approach.                  
+                  <br><br><br>
+              </p>
+              <figure align = "center">
+                <img display=inline-block src="https://intellipaint.s3.us-west-1.amazonaws.com/project_website/strokereg_valley_before.gif" alt="Trulli" width="256" height="256"> 
+                <img src="https://intellipaint.s3.us-west-1.amazonaws.com/project_website/strokereg_valley_after.gif" alt="Trulli" width="256" height="256"> 
+                <figcaption align = "justify"><br>Fig. 6 - <b>Extreme ablation analysis on role of brushstroke regularization. </b> (<i>Left, Right</i>) Painting sequences before and after brushstroke regularization. The example on the left represents an extreme illustration of overlapping patterns occurring as a result of using a predetermined brushstroke budget (1000 brushstrokes) irrespective of the complexity of the target image (<i>e.g.</i> notice the unnatural way in which brushstrokes combine to form the final image). On right, we see how our brushstroke regularization formulation removes these rendundancies, which allows our method to paint a vivid scene in less than 100 brush strokes while exhibiting a more natural painting style.</figcaption>
+              </figure>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-body is-small">
+        <div class="container alternate-section">
+          <div class="columns is-centered has-text-centered">
+              <div class="column is-four-fifths">
+                <h2 class="title is-3">Painting Efficiency</h2>
+                <!-- <p style="text-align:left">
+                  <br><br><br>
+                </p> -->
+                <figure align = "center"><img src="./docs/intelli-paint/assets/paint_eff_qual3.png" alt="Trulli"> <figcaption align = "justify"><br>Fig. 7 - <b>Qualitative method comparison w.r.t. painting efficiency</b>  <i>(Left)</i> Comparing final canvas outputs while using ~ 300 brushstrokes for (b) Ours, (c) Paint Transformer, (d) Optim, (e) RL and (f) Semantic-RL. We observe that our approach results in more accurate depiction of the fine-grain features in the target image while using a low brushstroke count. </figcaption></figure>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-body is-small">
+        <div class="container alternate-section">
+          <div class="columns is-centered has-text-centered">
+              <div class="column is-four-fifths">
+                <h2 class="title is-3">Resemblance with Human Painting Style</h2>
+                <!-- <p style="text-align:left">
+                  <br><br><br>
+                </p> -->
+                <figure align = "center"><img src="./docs/intelli-paint/assets/human_sim9.png" alt="Trulli"> <figcaption align = "justify"><br>Fig. 8 - <b>Qualitative method comparison w.r.t resemblance with the human painting style.</b>  We compare different methods (b-f). All painting sequences are generated using a different brushstroke count (indicated in the boxes), so as to ensure similar pixel-wise reconstruction loss with the target image. The corresponding frames for each sequence are computed after ~10%, 40%, 60% and 100% of the overall painting episode. We observe that our method offers higher resemblance with the human painting style (column-a) as compared to previous works.</figcaption></figure>              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-body is-small">
+        <div class="container alternate-section">
+          <div class="columns is-centered has-text-centered">
+              <div class="column is-four-fifths">
+                <h2 class="title is-2">Conclusion</h2>
+                <p style="text-align:left">
+                  In this paper, we emphasize that the practical merits of an autonomous painting system should be evaluated not only by the quality of generated canvas but also by the interpretability of the corresponding painting sequence by actual human artists. To this end, we propose a novel <em>Intelli-Paint</em> pipeline which uses progressive layering to allow for a more human-like evolution of the painted canvas. The painting agent focuses on different image areas through a sequence of coarse-to-fine localized attention windows and is able to paint detailed scenes while using a limited number of brushstrokes. Experiments reveal that in comparison with previous state-of-the-art methods, our approach not only shows improved painting efficiency but also exhibits a painting style which is much more relatable to actual human users.  We hope our work opens new avenues for the further development of interactive and robotic painting applications in the real world.                  <br><br><br>
+              </p>
+              </div>
+          </div>
+        </div>
+      </div>
 </section>
 
 
@@ -347,14 +462,14 @@ or, (b) performing a diverse range of custom edits directly on real image inputs
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <span>If you find our work useful in your research, please cite the following works:</span> 
-    <pre><code>@inproceedings{singh2022paint2pix,
+    <!-- <pre><code>@inproceedings{singh2022paint2pix,
       title={Paint2Pix: Interactive Painting based Progressive
             Image Synthesis and Editing},
       author={Singh, Jaskirat and Zheng, Liang and Smith, Cameron and Echevarria, Jose},
       booktitle={European conference on computer vision},
       year={2022},
       organization={Springer}
-    }</code></pre>
+    }</code></pre> -->
     <pre><code>@inproceedings{singh2022intelli,
       title={Intelli-Paint: Towards Developing Human-like Painting Agents},
       author={Singh, Jaskirat and Smith, Cameron and Echevarria, Jose and Zheng, Liang},
