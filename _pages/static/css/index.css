@@ -10,6 +10,7 @@ body {
   margin-top: -20px;
   padding: 30px 5px 40px 5px;
   border-bottom: 1px solid #bbb;
+  /* border-bottom: 1px solid rgb(89, 88, 88); */
   width: 1200px;
 }
 
@@ -146,6 +147,20 @@ body {
   font-size: 0;
   /* width: 256px; */
   max-width: 4096px;
+}
+
+.results-carousel .item-simple {
+  margin: 5px;
+  /* margin-left: -100px; */
+  /* margin-right: -100px; */
+  overflow: hidden;
+  border: 1px solid #bbb;
+  /* border-radius: 10px; */
+  padding: 20px;
+  font-size: 0;
+  /* width: 256px; */
+  max-width: 4096px;
+  background-color: white;
 }
 
 .results-carousel video {

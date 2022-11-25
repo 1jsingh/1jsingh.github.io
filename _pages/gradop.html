@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="High-Fidelity Guided Image Synthesis with Latent Diffusion Models">
+  <meta name="keywords" content="High-Fidelity Guided Image Synthesis with Latent Diffusion Models">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>High-Fidelity Guided Image Synthesis with Latent Diffusion Models</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+  <link href="/assets/images/icon.png" rel="icon" sizes="32x32" type="image/png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <!-- <script src="./static/js/target.js"></script> -->
+  <!-- <base target="_blank"> -->
+</head>
+<body>
+
+
+<!-- Navigation bar for visiting other research pages -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://1jsingh.github.io/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://1jsingh.github.io/paint2pix">
+            Paint2pix (ECCV-2022)
+          </a>
+          <a class="navbar-item" href="https://1jsingh.github.io/intelli-paint">
+            Intelli-paint (ECCV-2022)
+          </a>
+          <a class="navbar-item" href="https://1jsingh.github.io/semantic-guidance">
+            Semantic-Guidance (CVPR-2021)
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">High-Fidelity Guided Image Synthesis with Latent Diffusion Models 🏞</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://1jsingh.github.io/">Jaskirat Singh</a><sup>1</sup>&emsp;</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com.au/citations?user=YvdzeM8AAAAJ&hl=en">Stephen Gould</a><sup>1,2</sup>
+                &emsp;
+              </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=vNHqr3oAAAAJ&hl=en">Liang Zheng</a><sup>1,2</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>The Australian National University&emsp;&emsp;</span>
+            <span class="author-block"><sup>2</sup>Australian Centre for Robotic Vision</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- png Link. -->
+              <span class="link-block">
+                <a href="https://1jsingh.github.io/publications/gradopt-guided-synthesis.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-png"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Arxiv Link. -->
+              <span class="link-block">
+                <a href="https://1jsingh.github.io/publications/gradopt-guided-synthesis.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://drive.google.com/file/d/1aB0GEwrQEDSAZMujF7J3izMZlw1UT3U4/view?usp=sharing"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Demo Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-paint-brush"></i>
+                  </span>
+                  <span>Demo (Coming Soon)</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Cite</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body" text-align: center>
+      <img src="./docs/gradop/overview-v3.png" width=100%/>  
+      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/teaser.mp4"
+                type="video/mp4">
+      </video> -->
+      <h2 class=" has-text-justified">
+        <br> 
+        <b>Overview.</b> We propose a novel stroke based guided image synthesis framework which <emph>(Left)</emph> resolves the intrinsic domain shift problem in prior works (b), wherein the final images lack details and often resemble simplistic 
+        pictorial arts instead of realistic images as specified in the representations of the target domain (e) (generated using only text-conditioning).
+        Iteratively reperforming the guided synthesis with the generated outputs (c) seems to improve realism but it is expensive and the generated outputs 
+        tend to lose faithfulness with the reference (a) with each iteration. <emph>(Right)</emph> Additionally, the user is also able to specify the semantics of different painted regions without requiring any conditional training or finetuning.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<!-- <section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/steve.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/chair-tp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/shiba.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/fullbody.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/blueshirt.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/mask.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/coffee.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- sample results -->
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h3 class="subtitle has-text-centered">
+        <b>Interactive Results (Stable Diffusion)</b>
+      </h3>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item-simple item-steve">
+          <img src="./docs/gradop/sample-results-sdedit-p5.png">
+        </div>
+        <div class="item-simple item-steve">
+          <img src="./docs/gradop/sample-results-sdedit-p4.png">
+        </div>
+        <div class="item-simple item-steve">
+          <img src="./docs/gradop/sample-results-sdedit-p6.png">
+        </div>
+        <div class="item-simple item-steve">
+          <img src="./docs/gradop/sample-results-sdedit-p7.png">
+        </div>
+        <div class="item-simple item-steve">
+          <img src="./docs/gradop/sample-results-sdedit-p1.png">
+        </div>
+        <div class="item-simple item-steve">
+          <img src="./docs/gradop/sample-results-sdedit-p2.png">
+        </div>
+        <div class="item-simple item-steve">
+          <img src="./docs/gradop/sample-results-sdedit-p3.png">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop alternate-section">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Controllable image synthesis with user scribbles has gained huge public interest with the recent advent 
+            of text-conditioned latent diffusion models. The user scribbles control the color composition while the 
+            text prompt provides control over the overall image semantics. However, we find that prior works suffer 
+            from an intrinsic domain shift problem wherein the generated outputs often lack details and resemble simplistic 
+            representations of the target domain. In this paper, we propose a novel guided image synthesis framework, which 
+            addresses this problem by modeling the output image as the solution of a constrained optimization problem. 
+            We show that while computing an exact solution to the optimization is infeasible, an approximation of the same 
+            can be achieved while just requiring a single pass of the reverse diffusion process. Additionally, we show that 
+            by simply defining a cross-attention based correspondence between the input text tokens and the user stroke-painting, 
+            the user is also able to control the semantics of different painted regions without requiring any conditional 
+            training or finetuning. Human user study results show that the proposed approach outperforms the previous state-of-the-art 
+            by over 85.32% on the overall user satisfaction scores.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+</section>
+
+
+<!-- other sections -->
+<section class="hero">
+<!-- Paper video. -->
+<div class="hero-body is-small">
+<div class="container alternate-section">
+  <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Constrained Optimization Formulation</h2>
+        <figure>
+          <img src="./docs/gradop/method-overview-v5.png" width=100%/>
+          <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
+        </figure>
+        <p style="text-align:justify"> 
+          <br><br>
+          <!-- (a) Given a reference painting <emph>y</emph> and text prompt <emph>\tau_{text}</emph>, we first formulate the guided synthesis problem as the solution $x^\star$ of a constrained optimization problem with 2 properties: 1) $x^\star$ lies in the subspace $\mathcal{S}_{\tau_{text}}$ of outputs conditioned only on the text, and, 2) upon painting $x$ we should recover reference painting $y$. While computing an exact solution of this optimization is infeasible, we show that an approximation can be obtained by solving the unconstrained optimization in (b). Here we first use gradient descent to compute a point $x^\star$ close to a random sample $x_{\tau_{text}} \in \mathcal{S}_{\tau_{text}}$, while still minimizing the painting loss $\mathcal{L}(f(x),y)$. This $x^\star$ is usually non-photorealistic due to gradient descent. We therefore use the diffusion based inversion from \cite{song2020denoising} to map it back to target domain $\mathcal{S}_{\tau_{text}}$.  -->
+          We propose a diffusion-based guided image synthesis framework which models the output image as the solution 
+          of a constrained optimization problem. Given a reference painting <b>y</b>, the constrained optimization (a) 
+          is posed so as to find a solution <b>x</b> with two constraints: 1) upon painting <b>x</b> with an autonomous painting 
+          function <b>f</b> we should recover a painting <b>f(x)</b> which is similar to reference painting <b>y</b>, and, 2) the output <b>x</b> should lie in the target 
+          data subspace defined by the text prompt (<emph>i.e.</emph>, if the prompt says <i>"photo of a red tiger"</i> then we want the output 
+          images to be <i>realistic photos of a red tiger</i> instead of cartoon-like representations of the same concept). Subsequently, we show that while 
+          the computation of an exact solution for this optimization is infeasible, a practical approximation of the same can be achieved 
+          through simple gradient descent by solving the unconstrained optimization in (b).
+          <br><br>
+        </p>
+      </div>
+  </div>
+</div>
+</div>
+
+<div class="hero-body is-small">
+<div class="container alternate-section">
+  <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Guided Image Synthesis from User-scribbles</h2>
+        <p style="text-align:justify"><b>Comparison with prior works.</b> As compared to prior works, our method provides a more practical approach for improving output realism (with respect to the target domain) while still maintaining the faithfulness with the reference painting.
+          <br><br> </p>
+        <figure>
+          <!-- <img src="./docs/gradop/test.png" width=100%/> -->
+          <img src="./docs/gradop/sdedit-var-p4-v3.png" width=100%/>
+          <img src="./docs/gradop/sdedit-var-p7.png" width=100%/>
+          <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
+        </figure>
+
+        <p style="text-align:justify">
+          <br><br>
+          <b>More Results.</b> Our approach allows the user to easily generate realistic image outputs across a range of data modalities.
+          <br><br> </p>
+        <figure>
+          <img src="./docs/gradop/sample-results-ours.png" width=100%/>
+          <!-- <img src="./docs/gradop/sdedit-var-p4-v3.png" width=100%/> -->
+          <!-- <img src="./docs/gradop/sdedit-var-p7.png" width=100%/> -->
+          <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
+        </figure>
+        <!-- <p style="text-align:left"><br><br>Here is a sample reference on using the provided demo for achieving a diverse range of real image edits.<br><br></p>
+        <video id="teaser" controls autoplay muted loop playsinline height="100%">
+          <source src="docs/demo_videos/real-image-editing-v1.mp4"
+                  type="video/mp4">
+        </video> -->
+      </div>
+  </div>
+</div>
+</div>
+
+<div class="hero-body is-small">
+<div class="container  alternate-section">
+  <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Controlling Semantics of Different Painting Regions</h2>
+        <p style="text-align:justify">
+          <!-- Finally, while the above approximate guided image synthesis algorithm allows for generation of image outputs 
+          with high <i>faithfulness</i> and <i>realism</i>, the semantics of different painted regions are inferred in an implicit manner.    
+          Such inference is typically based on the cross-attention priors (learned by the diffusion model) 
+          and might not accurately reflect the user's intent in drawing a particular painting region.
+          For instance, in the first example from following figure, we note that for different outputs, 
+          the blue region can be inferred as a river, waterfall, or a valley. Also note that some painting regions might be entirely omitted (<i>e.g.,</i> the brown strokes for the hut), 
+          if the model does not understand that the corresponding strokes indicate a distinct semantic entity <i>e.g.,</i> a hut, small castle <i>etc</i>. Moreover, as shown below
+          such discrepancies persist even if the corresponding semantic labels (<i>e.g.</i> a hut) are added to the textual prompt.  -->
+          <!-- While the above approach for guided image synthesis with user-strokes allows for generation of  image outputs 
+          with high <i>faithfulness</i> and <i>realism</i>,  -->
+          While performing guided image synthesis with coarse user-scribbles,
+          the semantics of different painted regions are inferred in an implicit manner. For instance, in following figure, we note that for different outputs, 
+          the blue region can be inferred as a river, waterfall, or a valley. Also note that some painting regions might be entirely omitted (<i>e.g.,</i> the brown strokes for the hut), 
+          if the model does not understand that the corresponding strokes indicate a distinct semantic entity.
+           <!-- <i>e.g.,</i> a hut, small castle <i>etc</i>.  -->
+          <!-- Moreover, as shown below such discrepancies persist even if the corresponding semantic labels (<i>e.g.</i> a hut) are added to the textual prompt.  -->
+          <br> <br></p>
+        <figure>
+          <img src="./docs/gradop/semantic-control-p1.png" width=100%/>
+          <!-- <img src="./docs/gradop/semantic-control-p2.png" width=100%/> -->
+          <!-- <img src="./docs/gradop/semantics-control-v3.png" width=100%/> -->
+          <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
+        </figure>
+        <p style="text-align:justify">
+          <br> <br>
+          We show that by simply defining a cross-attention based corrrespondence between input text-tokens and reference painting, the user can control the semantics of different painting regions without needing any additonal training or finetuning.
+          <br> <br></p>
+        <figure>
+          <img src="./docs/gradop/semantic-control-p2.png" width=100%/>
+          <!-- <img src="./docs/gradop/semantic-control-p2.png" width=100%/> -->
+          <!-- <img src="./docs/gradop/semantics-control-v3.png" width=100%/> -->
+          <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
+        </figure>
+      </div>
+  </div>
+</div>
+</div>
+
+
+<div class="hero-body is-small">
+  <div class="container alternate-section">
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <!-- <h2 class="title is-3">Performance on Out-of-Distribution Prompts</h2> -->
+          <h2 class="title is-3">Out-of-Distribution Generalization</h2>
+          <p style="text-align:justify">
+            As shown in above, we find that the proposed approach allows for a high level of semantic control (both color composition and fine-grain semantics) over the output image attributes, while still maintaining the <i>realism</i> with respect to the target domain. Thus a natural question arises: <i>Can we use the proposed approach to generate realistic photos with out-of-distribution text prompts?</i>
+            As shown below, we observe that both success and failure cases exist for out-of-distribution prompts. For instance, while the model was able to generate <i>"realistic photos of cats with six legs"</i>
+            (note that for the same inputs prior works either 
+            generate faithful but cartoon-like outputs, or, simply generate regular cats), 
+            it shows poor performance while generating <i>"a photo of a rat chasing a lion"</i>.
+            <br><br> </p>
+          <figure>
+            <img src="./docs/gradop/out-of-dist-p1.png" width=75%/>
+            <img src="./docs/gradop/out-of-dist-p2.png" width=75%/>
+            <!-- <img src="./docs/gradop/sdedit-var-p7.png" width=100%/> -->
+            <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
+          </figure>
+          <!-- <p style="text-align:left"><br><br>Here is a sample reference on using the provided demo for achieving a diverse range of real image edits.<br><br></p>
+          <video id="teaser" controls autoplay muted loop playsinline height="100%">
+            <source src="docs/demo_videos/real-image-editing-v1.mp4"
+                    type="video/mp4">
+          </video> -->
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="hero-body is-small">
+  <div class="container alternate-section">
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <!-- <h2 class="title is-3">Performance on Out-of-Distribution Prompts</h2> -->
+          <!-- <h2 class="title is-3">Variation with Number of Gradient Steps</h2> -->
+          <h2 class="title is-3">Increasing Faithfulness With Reference Painting</h2>
+          <p style="text-align:justify">
+            While our guided synthesis framework allows the user to generate realistic content from fairly coarse user-scribbles, the user can 
+            also increase the faithfulness with the input strokes (<i>e.g.</i> as desired with semantic segmentation based conditioning) by simply increasing the number of
+            gradient descent steps used for solving the constrained optimization problem.
+            <!-- A key component of the proposed method is to obtain an approximate solution for the constrained problem formulation (discussed above)
+            using gradient descent. In the following figure we visualize the variation in generated outputs as the number of gradient descent steps used for
+            performing the optimization are increased. -->
+            <br>
+
+            <br><br> </p>
+          <figure>
+            <img src="./docs/gradop/ngrad-var-v1.png" width=75%/>
+            <!-- <img src="./docs/gradop/out-of-dist-p2.png" width=80%/> -->
+            <!-- <img src="./docs/gradop/sdedit-var-p7.png" width=100%/> -->
+            <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
+          </figure>
+
+          <p style="text-align:justify">
+            <br>
+            <!-- <br> -->
+            As shown above, we find that for <i>N=0</i>, the generated outputs are sampled randomly from the subspace of outputs conditioned only on the text.
+            As the number of gradient-descent steps increase, the model converges to a subset of solutions 
+            within the target subspace (conditioned only on text-prompt) which exhibit higher <i>faithfulness</i> with 
+            the provided reference painting. Please note that this behaviour is in contrast with prior works like SDEdit, 
+            wherein the increase in <i>faithfulness</i> to the reference is corresponded with a decrease in the <i>realism</i> of 
+            the generated outputs.
+            <br>
+            <br><br> </p>
+          
+          <!-- <p style="text-align:left"><br><br>Here is a sample reference on using the provided demo for achieving a diverse range of real image edits.<br><br></p>
+          <video id="teaser" controls autoplay muted loop playsinline height="100%">
+            <source src="docs/demo_videos/real-image-editing-v1.mp4"
+                    type="video/mp4">
+          </video> -->
+        </div>
+    </div>
+  </div>
+</div>
+
+<!--/ Paper video. -->
+<!-- </div> -->
+</section>
+
+
+
+
+<!-- Bibtex -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <span>If you find our work useful in your research, please cite our paper:</span> 
+    <pre><code>@article{singh2022highfidelity,
+      title={High-Fidelity Guided Image Synthesis with Latent Diffusion Models},
+      author={Singh, Jaskirat and Gould, Stephen and Zheng, Liang},
+      journal={arxiv},
+      year={2022}
+    }</code></pre>
+  </div>
+</section>
+
+</section>
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://homes.cs.washington.edu/~kpar/nerfies/videos/nerfies_paper.png">
+        <i class="fas fa-file-png"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Website source code based on the <a
+            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> project. If you want to reuse their source code, please credit them.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
