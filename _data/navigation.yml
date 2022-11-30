@@ -2,11 +2,11 @@
   link: /
 - name: Blog
   link: /blog/
-- name: Projects
-  link: /#projects
+- name: Misc.
+  link: /#misc
 - name: Publications
   link: /#publications
-- name: CV
+- name:   CV
   link: /data/cv.pdf
 # - name: "Teaching  "
 #   link: /teaching/
