@@ -116,7 +116,7 @@
             <div class="publication-links">
               <!-- png Link. -->
               <span class="link-block">
-                <a href="#"
+                <a href="https://1jsingh.github.io/publications/divide-evaluate-and-refine.pdf"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -156,12 +156,12 @@
               </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="#"
+                <a href="https://github.com/1jsingh/Divide-Evaluate-and-Refine.git"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code (Coming Soon)</span>
+                  <span>Code</span>
                   </a>
               </span>
               <!-- Dataset Link. -->
@@ -194,7 +194,7 @@
       </video> -->
       <h2 class=" has-text-justified">
         <!-- <br>  -->
-        <b>Overview.</b> We propose a novel iterative VQA feedback mechanism to improve text-to-image alignment.
+        <b>Overview.</b> We propose a training-free decompositional framework which helps both better evaluate and gradually improve text-to-image alignment using iterative VQA feedback.
       </h2>
     </div>
   </div>
@@ -259,7 +259,7 @@
 </section> -->
 
 <!-- sample results -->
-<section class="hero is-light is-small">
+<!-- <section class="hero is-light is-small">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <h3 class="subtitle has-text-centered">
@@ -290,7 +290,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <section class="section">
   <div class="container is-max-desktop alternate-section">
@@ -341,6 +341,17 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Evaluating Text-to-Image Alignment</h2>
         <figure>
+          <img src="./docs/divide-evaluate-and-refine/overview-eval-v3.png" width=100%/>
+          <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->    
+        </figure>
+        <p style="text-align:justify"> 
+          <b>Decompositional Alignment Score:</b> Traditional methods for evaluating text-to-image alignment, for example, CLIP<sup><a href="#ref1">1</a></sup>, BLIP-2<sup><a href="#ref2">2</a></sup> and BLIP2-ITM 
+            (which provides a binary image-text matching score between 0 and 1) often fail to distinguish between good (<em>right</em>) and bad (<em>left</em>) image outputs and can give high scores even 
+            if the generated image is not an accurate match for input prompt (missing yellow car). In contrast, by breaking down the prompt into a set of disjoint assertions and then evaluating their alignment with the 
+            generated image using a VQA model<sup><a href="#ref2">2</a></sup>, the proposed Decompositional-Alignment Score (DA-score) shows much better correlation with human ratings.
+        </p>
+        <br><br> <br><br>
+        <figure>
           <img src="./docs/divide-evaluate-and-refine/corr-human-v1.png" width=100%/>
           <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->    
         </figure>
@@ -361,11 +372,7 @@
   <div class="container alternate-section">
     <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Method Overview</h2>
-          <figure>
-            <img src="./docs/divide-evaluate-and-refine/overview-eval-v3.png" width=100%/>
-            <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->    
-          </figure>
+          <h2 class="title is-3">Improving Text-to-Image Alignment</h2>
           <br><br>
           <figure>
             <img src="./docs/divide-evaluate-and-refine/method-overview-v1.png" width=100%/>
@@ -373,9 +380,8 @@
           </figure>
           <p style="text-align:justify"> 
             <br>
-            <b>Method comparisons w.r.t correlation with human ratings:</b>
-            We compare the correlation of different text-to-image alignment scores with those obtained from human subjects, as the number of subjects in the input prompt is varied. 
-            We observe that the proposed alignment score (DA-score) provides a better match for human-ratings over traditional text-to-image alignment scores like CLIP, BLIP and BLIP2.
+            <b>Method Overview:</b>
+            Given a text prompt <b>P</b> and an initially generated output <b>I</b>, we first generate a set of disjoint assertions <span>a<sub>i</sub></span> regarding the content of the caption. The alignment of the output image <b>I</b> with each of these assertions is then calculated using a VQA model. Finally, we use the assertion-based-alignment scores <span>u<sub>i</sub></span>(<b>I</b>,<b>P</b>) as feedback to increase the weightage <span>w<sub>i</sub></span> (of the assertion with least alignment score) in a parameterized diffusion model formulation. This process can then be performed in an iterative manner to gradually improve the quality of the generated outputs until a desirable threshold for the overall alignment score Omega(<b>I</b><sub>k</sub>,<b>P</b>) is reached.                    
             <br><br>
           </p>
         </div>
@@ -390,7 +396,7 @@
   <div class="container alternate-section">
     <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Improving Text-to-Image Alignment</h2>
+          <h2 class="title is-3">Results</h2>
           <figure>
             <img src="./docs/divide-evaluate-and-refine/alignment-acc-var-diff-v1.png" width=100%/>
             <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->    
@@ -407,161 +413,7 @@
   </div>
   </div>
 
-<div class="hero-body is-small">
-<div class="container alternate-section">
-  <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Guided Image Synthesis from User-scribbles</h2>
-        <p style="text-align:justify"><b>Comparison with prior works.</b> As compared to prior works, our method provides a more practical approach for improving output realism (with respect to the target domain) while still maintaining the faithfulness with the reference painting.
-          <br><br> </p>
-        <figure>
-          <!-- <img src="./docs/gradop/test.png" width=100%/> -->
-          <img src="./docs/gradop/sdedit-var-p4-v3.png" width=100%/>
-          <img src="./docs/gradop/sdedit-var-p7.png" width=100%/>
-          <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
-        </figure>
 
-        <p style="text-align:justify">
-          <br><br>
-          <b>More Results.</b> Our approach allows the user to easily generate realistic image outputs across a range of data modalities.
-          <br><br> </p>
-        <figure>
-          <img src="./docs/gradop/sample-results-ours-p3.png" width=100%/>
-          <img src="./docs/gradop/sample-results-ours-p2.png" width=100%/>
-          <img src="./docs/gradop/sample-results-ours-v3.png" width=100%/>
-          <!-- <img src="./docs/gradop/sdedit-var-p4-v3.png" width=100%/> -->
-          <!-- <img src="./docs/gradop/sdedit-var-p7.png" width=100%/> -->
-          <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
-        </figure>
-        <!-- <p style="text-align:left"><br><br>Here is a sample reference on using the provided demo for achieving a diverse range of real image edits.<br><br></p>
-        <video id="teaser" controls autoplay muted loop playsinline height="100%">
-          <source src="docs/demo_videos/real-image-editing-v1.mp4"
-                  type="video/mp4">
-        </video> -->
-      </div>
-  </div>
-</div>
-</div>
-
-<div class="hero-body is-small">
-<div class="container  alternate-section">
-  <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Controlling Semantics of Different Painting Regions</h2>
-        <p style="text-align:justify">
-          <!-- Finally, while the above approximate guided image synthesis algorithm allows for generation of image outputs 
-          with high <i>faithfulness</i> and <i>realism</i>, the semantics of different painted regions are inferred in an implicit manner.    
-          Such inference is typically based on the cross-attention priors (learned by the diffusion model) 
-          and might not accurately reflect the user's intent in drawing a particular painting region.
-          For instance, in the first example from following figure, we note that for different outputs, 
-          the blue region can be inferred as a river, waterfall, or a valley. Also note that some painting regions might be entirely omitted (<i>e.g.,</i> the brown strokes for the hut), 
-          if the model does not understand that the corresponding strokes indicate a distinct semantic entity <i>e.g.,</i> a hut, small castle <i>etc</i>. Moreover, as shown below
-          such discrepancies persist even if the corresponding semantic labels (<i>e.g.</i> a hut) are added to the textual prompt.  -->
-          <!-- While the above approach for guided image synthesis with user-strokes allows for generation of  image outputs 
-          with high <i>faithfulness</i> and <i>realism</i>,  -->
-          While performing guided image synthesis with coarse user-scribbles,
-          the semantics of different painted regions are inferred in an implicit manner. For instance, in following figure, we note that for different outputs, 
-          the blue region can be inferred as a river, waterfall, or a valley. Also note that some painting regions might be entirely omitted (<i>e.g.,</i> the brown strokes for the hut), 
-          if the model does not understand that the corresponding strokes indicate a distinct semantic entity.
-           <!-- <i>e.g.,</i> a hut, small castle <i>etc</i>.  -->
-          <!-- Moreover, as shown below such discrepancies persist even if the corresponding semantic labels (<i>e.g.</i> a hut) are added to the textual prompt.  -->
-          <br> <br></p>
-        <figure>
-          <img src="./docs/gradop/semantic-control-p1.png" width=100%/>
-          <!-- <img src="./docs/gradop/semantic-control-p2.png" width=100%/> -->
-          <!-- <img src="./docs/gradop/semantics-control-v3.png" width=100%/> -->
-          <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
-        </figure>
-        <p style="text-align:justify">
-          <br> <br>
-          We show that by simply defining a cross-attention based corrrespondence between input text-tokens and reference painting, the user can control the semantics of different painting regions without needing any additonal training or finetuning.
-          <br> <br></p>
-        <figure>
-          <img src="./docs/gradop/semantic-control-p2.png" width=100%/>
-          <!-- <img src="./docs/gradop/semantic-control-p2.png" width=100%/> -->
-          <!-- <img src="./docs/gradop/semantics-control-v3.png" width=100%/> -->
-          <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
-        </figure>
-      </div>
-  </div>
-</div>
-</div>
-
-
-<div class="hero-body is-small">
-  <div class="container alternate-section">
-    <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <!-- <h2 class="title is-3">Performance on Out-of-Distribution Prompts</h2> -->
-          <h2 class="title is-3">Out-of-Distribution Generalization</h2>
-          <p style="text-align:justify">
-            As shown in above, we find that the proposed approach allows for a high level of semantic control (both color composition and fine-grain semantics) over the output image attributes, while still maintaining the <i>realism</i> with respect to the target domain. Thus a natural question arises: <i>Can we use the proposed approach to generate realistic photos with out-of-distribution text prompts?</i>
-            As shown below, we observe that both success and failure cases exist for out-of-distribution prompts. For instance, while the model was able to generate <i>"realistic photos of cats with six legs"</i>
-            (note that for the same inputs prior works either 
-            generate faithful but cartoon-like outputs, or, simply generate regular cats), 
-            it shows poor performance while generating <i>"a photo of a rat chasing a lion"</i>.
-            <br><br> </p>
-          <figure>
-            <img src="./docs/gradop/out-of-dist-p1.png" width=70%/>
-            <img src="./docs/gradop/out-of-dist-p2.png" width=70%/>
-            <!-- <img src="./docs/gradop/sdedit-var-p7.png" width=100%/> -->
-            <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
-          </figure>
-          <!-- <p style="text-align:left"><br><br>Here is a sample reference on using the provided demo for achieving a diverse range of real image edits.<br><br></p>
-          <video id="teaser" controls autoplay muted loop playsinline height="100%">
-            <source src="docs/demo_videos/real-image-editing-v1.mp4"
-                    type="video/mp4">
-          </video> -->
-        </div>
-    </div>
-  </div>
-</div>
-
-<div class="hero-body is-small">
-  <div class="container alternate-section">
-    <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <!-- <h2 class="title is-3">Performance on Out-of-Distribution Prompts</h2> -->
-          <h2 class="title is-3">Variation with Number of Gradient Steps</h2>
-          <!-- <h2 class="title is-3">Increasing Faithfulness With Reference Painting</h2> -->
-          <p style="text-align:justify">
-            <!-- While our guided synthesis framework allows the user to generate realistic content from fairly coarse user-scribbles, the user can 
-            also increase the faithfulness with the input strokes (<i>e.g.</i> as desired with semantic segmentation based conditioning) by simply increasing the number of
-            gradient descent steps used for solving the constrained optimization problem. -->
-            A key component of the proposed method is to obtain an approximate solution for the constrained problem formulation (discussed above)
-            using simple gradient descent. In the following figure, we visualize the variation in generated outputs as the number of gradient descent steps used for
-            performing the optimization are increased.
-            <br>
-
-            <br><br> </p>
-          <figure>
-            <img src="./docs/gradop/ngrad-var-final-v1.png" width=70%/>
-            <!-- <img src="./docs/gradop/out-of-dist-p2.png" width=80%/> -->
-            <!-- <img src="./docs/gradop/sdedit-var-p7.png" width=100%/> -->
-            <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
-          </figure>
-
-          <p style="text-align:justify">
-            <br>
-            <!-- <br> -->
-            As shown above, we find that for <i>N=0</i>, the generated outputs are sampled randomly from the subspace of outputs conditioned only on the text.
-            As the number of gradient-descent steps increase, the model converges to a subset of solutions 
-            within the target subspace (conditioned only on text-prompt) which exhibit higher <i>faithfulness</i> with 
-            the provided reference painting. Please note that this behaviour is in contrast with prior works like SDEdit, 
-            wherein the increase in <i>faithfulness</i> to the reference is corresponded with a decrease in the <i>realism</i> of 
-            the generated outputs.
-            <br>
-            <br><br> </p>
-          
-          <!-- <p style="text-align:left"><br><br>Here is a sample reference on using the provided demo for achieving a diverse range of real image edits.<br><br></p>
-          <video id="teaser" controls autoplay muted loop playsinline height="100%">
-            <source src="docs/demo_videos/real-image-editing-v1.mp4"
-                    type="video/mp4">
-          </video> -->
-        </div>
-    </div>
-  </div>
-</div>
 
 <!--/ Paper video. -->
 <!-- </div> -->
@@ -575,11 +427,10 @@
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <span>If you find our work useful in your research, please consider citing:</span> 
-    <pre><code>@inproceedings{singh2023high,
-      title={High-Fidelity Guided Image Synthesis With Latent Diffusion Models},
-      author={Singh, Jaskirat and Gould, Stephen and Zheng, Liang},
-      booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-      pages={5997--6006},
+    <pre><code>@article{singh2023divide,
+      title={Divide, Evaluate, and Refine: Evaluating and Improving Text-to-Image Alignment with Iterative VQA Feedback},
+      author={Singh, Jaskirat and Zheng, Liang},
+      journal={arXiv preprint},
       year={2023}
     }
   </code></pre>
