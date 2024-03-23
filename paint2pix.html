@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Paint2pix: Interactive Painting based Progressive Image Synthesis and Editing">
+  <meta name="keywords" content="Paint2Pix, Image Synthesis, Image Editing, Interactive, Painting">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paint2pix: Interactive Painting based Progressive Image Synthesis and Editing</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+  <link href="/assets/images/icon.png" rel="icon" sizes="32x32" type="image/png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index-paint2pix.js"></script>
+  <!-- <script src="./static/js/target.js"></script> -->
+  <base target="_blank">
+</head>
+<body>
+
+
+<!-- Navigation bar for visiting other research pages -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://1jsingh.github.io/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://1jsingh.github.io/gradop">
+            GradOP Img2Img (CVPR-2023)
+          </a>
+          <a class="navbar-item" href="https://1jsingh.github.io/paint2pix">
+            Paint2pix (ECCV-2022)
+          </a>
+          <a class="navbar-item" href="https://1jsingh.github.io/intelli-paint">
+            Intelli-paint (ECCV-2022)
+          </a>
+          <a class="navbar-item" href="https://1jsingh.github.io/semantic-guidance">
+            Semantic-Guidance (CVPR-2021)
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Paint2Pix: Interactive Painting based Progressive Image Synthesis and Editing (ECCV 2022)</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://1jsingh.github.io/">Jaskirat Singh</a><sup>1,2</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=vNHqr3oAAAAJ&hl=en">Liang Zheng</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="#">Cameron Smith</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=AUsvKdEAAAAJ&hl=en">Jose Echevarria</a><sup>2</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Australian National University,</span>
+            <span class="author-block"><sup>2</sup>Adobe Research</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://1jsingh.github.io/publications/paint2pix.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Arxiv Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2208.08092"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://drive.google.com/file/d/1aB0GEwrQEDSAZMujF7J3izMZlw1UT3U4/view?usp=sharing"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Demo Link. -->
+              <span class="link-block">
+                <a href="http://exposition.cecs.anu.edu.au:6009" target="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-paint-brush"></i>
+                  </span>
+                  <span>Demo</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/1jsingh/paint2pix"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Cite</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body" text-align: center>
+      <img src="https://1jsingh.github.io/assets/publications/images/paint2pix.png" width=100%/>  
+      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/teaser.mp4"
+                type="video/mp4">
+      </video> -->
+      <h2 class="subtitle has-text-centered">
+        We propose <em>paint2pix</em> which helps the user directly express his/her ideas in visual form by learning to predict user-intention from a few rudimentary brushstrokes. The proposed approach can be used for (a) synthesizing a desired image output directly from scratch 
+wherein it allows the user to control the overall synthesis trajectory using just few coarse brushstrokes (blue arrows) at key points,
+or, (b) performing a diverse range of custom edits directly on real image inputs.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<!-- <section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/steve.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/chair-tp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/shiba.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/fullbody.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/blueshirt.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/mask.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/coffee.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Controllable image synthesis with user scribbles is a topic
+            of keen interest in the computer vision community. In this paper, for
+            the first time we study the problem of photorealistic image synthesis
+            from incomplete and primitive human paintings. In particular, we propose a novel approach paint2pix, which learns to predict (and adapt)
+            “what a user wants to draw” from rudimentary brushstroke inputs, by
+            learning a mapping from the manifold of incomplete human paintings to
+            their realistic renderings. When used in conjunction with recent works
+            in autonomous painting agents, we show that paint2pix can be used for
+            progressive image synthesis from scratch. During this process, paint2pix
+            allows a novice user to progressively synthesize the desired image output,
+            while requiring just few coarse user scribbles to accurately steer the trajectory of the synthesis process. Furthermore, we find that our approach
+            also forms a surprisingly convenient approach for real image editing, and
+            allows the user to perform a diverse range of custom fine-grained edits
+            through the addition of only a few well-placed brushstrokes.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+</section>
+
+<!-- sample results -->
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h3 class="subtitle has-text-centered">
+        Some sample images and artwork progressively synthesized from scratch using <em>paint2pix</em>.
+      </h3>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <img src="./docs/sample_results/progressive-synthesis-1.jpeg">
+        </div>
+        <div class="item item-steve">
+          <img src="./docs/sample_results/watercolor-1.jpeg">
+        </div>
+        <div class="item item-steve">
+          <img src="./docs/sample_results/artwork-3.jpg">
+        </div>
+        <div class="item item-steve">
+          <img src="./docs/sample_results/oilpaint-1.jpg">
+        </div>
+        <div class="item item-steve">
+          <img src="./docs/sample_results/toon-3.jpg">
+        </div>
+        <div class="item item-steve">
+          <img src="./docs/sample_results/watercolor-2.jpeg">
+        </div>
+        <div class="item item-steve">
+          <img src="./docs/sample_results/toon-1.jpg">
+        </div>
+        <div class="item item-steve">
+          <img src="./docs/sample_results/toon-2.jpg">
+        </div>
+        <div class="item item-steve">
+          <img src="./docs/sample_results/real-1.png">
+        </div>
+        <div class="item item-steve">
+          <img src="./docs/sample_results/real-3.jpg">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- other sections -->
+<section class="hero">
+<!-- Paper video. -->
+<div class="hero-body is-small">
+<div class="container alternate-section">
+  <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Progressive Image Synthesis</h2>
+        <p style="text-align:left">When used in conjunction with recent works
+          in autonomous painting agents, we show that paint2pix can be used for
+          progressive image synthesis from scratch. During this process, paint2pix
+          allows a novice user to progressively synthesize the desired image output,
+          while requiring just few coarse user scribbles to accurately steer the trajectory of the synthesis process. <br><br></p>
+        <figure>
+          <img src="./docs/prog-synthesis.png" width=100%/>
+          <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
+        </figure>
+      </div>
+  </div>
+</div>
+</div>
+
+<div class="hero-body is-small">
+<div class="container alternate-section">
+  <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Real Image Editing</h2>
+        <p style="text-align:left">In addition to being able to perform progressive synthesis from scratch, paint2pix
+        also offers a surprisingly convenient approach for making a diverse range of custom semantic edits (e.g., add smile for faces) on real images by simply initializing
+        the input canvas with a real image.<br><br> </p>
+        <figure>
+          <img src="./docs/custom-color-edits.png" width=100%/>
+          <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
+        </figure>
+        <p style="text-align:left"><br><br>Here is a sample reference on using the provided demo for achieving a diverse range of real image edits.<br><br></p>
+        <video id="teaser" controls autoplay muted loop playsinline height="100%">
+          <source src="docs/demo_videos/real-image-editing-v1.mp4"
+                  type="video/mp4">
+        </video>
+      </div>
+  </div>
+</div>
+</div>
+
+<div class="hero-body is-small">
+<div class="container  alternate-section">
+  <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Artistic Content Generation</h2>
+        <p style="text-align:left">While the main goal of paint2pix is to perform photorealistic image synthesis from primitive human paintings and brushstrokes, it can also be used for
+          artistic content generation. In the following paint2pix allows a novice artist to generate different forms
+          of professional artistic content (e.g., colored sketches, oil painting, disney cartoons, watercolor paintings, etc.) using just few rudimentary brushstroke inputs. <br> <br></p>
+        <figure>
+          <img src="./docs/watercolor-synthesis.png" width=100%/>
+          <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
+        </figure>
+      </div>
+  </div>
+</div>
+</div>
+
+
+<!--/ Paper video. -->
+<!-- </div> -->
+</section>
+
+
+
+
+<!-- Bibtex -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <span>If you find our work useful in your research, please cite the following works:</span> 
+    <pre><code>@inproceedings{singh2022paint2pix,
+      title={Paint2pix: interactive painting based progressive image synthesis and editing},
+      author={Singh, Jaskirat and Zheng, Liang and Smith, Cameron and Echevarria, Jose},
+      booktitle={European Conference on Computer Vision},
+      pages={678--695},
+      year={2022},
+      organization={Springer}
+    }</code></pre>
+    <pre><code>@inproceedings{singh2022intelli,
+      title={Intelli-Paint: Towards Developing More Human-Intelligible Painting Agents},
+      author={Singh, Jaskirat and Smith, Cameron and Echevarria, Jose and Zheng, Liang},
+      booktitle={European Conference on Computer Vision},
+      pages={685--701},
+      year={2022},
+      organization={Springer}
+    }</code></pre>
+  </div>
+</section>
+
+</section>
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://homes.cs.washington.edu/~kpar/nerfies/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Website source code based on the <a
+            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> project. If you want to reuse their source code, please credit them.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
