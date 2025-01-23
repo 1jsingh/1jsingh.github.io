@@ -48,6 +48,43 @@ background-color: transparent;
 text-decoration: underline;
 }
 
+/* Title styling */
+.news-title {
+margin-top: 0;
+text-align: left;
+font-size: 1.5rem;
+font-weight: 700;
+}
+
+/* Horizontal rules between title, list, etc. */
+.news-separator {
+border: 0;         
+height: 1px;
+background: #ccc;
+margin: 1rem 0;
+}
+
+/* News list styling */
+.news-list {
+list-style: none;  
+margin: 0;
+padding: 0;
+}
+
+/* Each news item with bullet, etc. */
+.news-list li {
+margin: 0.5rem 0;
+padding-left: 1.25rem;
+position: relative;
+}
+.news-list li::before {
+content: "•";
+position: absolute;
+left: 0;
+color: #333;
+font-weight: bold;
+}
+  
 /*
  *
  * Research Highlight Config
