@@ -14,7 +14,7 @@ jobs:
       # Set up Ruby, specifying the version
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1' # Updated to a more recent stable version
+          ruby-version: '3.2' # Updated to satisfy sass-embedded gem requirement
           bundler-cache: true # Enable bundler caching
 
       # Use GitHub Deploy Action to build and deploy to Github
